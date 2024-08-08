@@ -10,6 +10,9 @@ terraform/
 ├── outputs.tf
 ├── provider.tf
 ├── backend.tf
+├── dev.tfvars
+├── staging.tfvars
+├── prod.tfvars
 ├── modules/
 │   ├── vpc/
 │   │   ├── main.tf
@@ -63,7 +66,11 @@ terraform workspace select prod
 Apply the Terraform configuration:
 
 ```sh
-terraform apply
+terraform apply -var-file="dev.tfvars"
+# or
+terraform apply -var-file="staging.tfvars"
+# or
+terraform apply -var-file="prod.tfvars"
 ```
 
 ## Configuration Files
@@ -385,7 +392,11 @@ terraform workspace select prod
 Apply the Terraform configuration:
 
 ```sh
-terraform apply
+terraform apply -var-file="dev.tfvars"
+# or
+terraform apply -var-file="staging.tfvars"
+# or
+terraform apply -var-file="prod.tfvars"
 ```
 
 ### How Each Workspace Works
@@ -406,3 +417,65 @@ By using workspaces, you can manage multiple environments within the same Terraf
 - `terraform.tfstate.d/prod/terraform.tfstate`
 
 By using Terraform workspaces, you can manage multiple environments within the same configuration while keeping them isolated from each other.
+
+### Creating Environment-Specific `.tfvars` Files
+
+#### `dev.tfvars`
+```hcl
+region = "us-west-2"
+vpc_cidr = "10.0.0.0/16"
+public_subnet_cidr = "10.0.1.0/24"
+ami_id = "ami-12345678"
+instance_type = "t2.micro"
+zone_id = "Z1234567890"
+record_name = "dev.example.com"
+environment = "dev"
+```
+
+#### `staging.tfvars`
+```hcl
+region = "us-west-2"
+vpc_cidr = "10.0.0.0/16"
+public_subnet_cidr = "10.0.2.0/24"
+ami_id = "ami-23456789"
+instance_type = "t2.micro"
+zone_id = "Z2345678901"
+record_name = "staging.example.com"
+environment = "staging"
+```
+
+#### `prod.tfvars`
+```hcl
+region = "us-west-2"
+vpc_cidr = "10.0.0.0/16"
+public_subnet_cidr = "10.0.3.0/24"
+ami_id = "ami-34567890"
+instance_type = "t2.micro"
+zone_id = "Z3456789012"
+record_name = "example.com"
+environment = "prod"
+```
+
+### Using the `.tfvars` Files
+
+When you run Terraform commands, you can specify the appropriate `.tfvars` file for the environment you want to work with:
+
+#### For Dev Environment
+```sh
+terraform workspace select dev
+terraform apply -var-file="dev.tfvars"
+```
+
+#### For Staging Environment
+```sh
+terraform workspace select staging
+terraform apply -var-file="staging.tfvars"
+```
+
+#### For Prod Environment
+```sh
+terraform workspace select prod
+terraform apply -var-file="prod.tfvars"
+```
+
+By following these best practices, you can ensure that each environment is isolated and managed effectively.
