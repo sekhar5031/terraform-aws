@@ -1,0 +1,8 @@
+region = "us-west-2"
+vpc_cidr = "10.0.0.0/16"
+public_subnet_cidr = "10.0.3.0/24"
+ami_id = "ami-34567890"
+instance_type = "t2.micro"
+zone_id = "Z3456789012"
+record_name = "example.com"
+environment = "prod"
