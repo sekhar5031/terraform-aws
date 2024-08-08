@@ -1,0 +1,1 @@
+{"Modules":[{"Key":"","Source":"","Dir":"."},{"Key":"ec2","Source":"./modules/ec2","Dir":"modules/ec2"},{"Key":"eip","Source":"./modules/eip","Dir":"modules/eip"},{"Key":"route53","Source":"./modules/route53","Dir":"modules/route53"},{"Key":"vpc","Source":"./modules/vpc","Dir":"modules/vpc"}]}

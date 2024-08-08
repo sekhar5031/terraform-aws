@@ -1,3 +1,1 @@
-output "record" {
-  value = aws_route53_record.main.fqdn
-}
+# Removed duplicate output definition
