@@ -1,4 +1,4 @@
-resource "aws_eip" {
+resource "aws_eip" "main" {
   instance = var.instance_id
 }
 
