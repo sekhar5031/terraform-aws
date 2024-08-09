@@ -1,11 +1,11 @@
-resource "aws_route53_record" "main" {
+resource "aws_route53_record" "www" {
   zone_id = var.zone_id
-  name = var.record_name
-  type = var.record_type
-  ttl = 300
-  records = [var.record_value]
-}
+  name    = var.domain_name
+  type    = "A"
 
-output "record" {
-  value = aws_route53_record.main.fqdn
+  alias {
+    name                   = aws_cloudfront_distribution.example.domain_name
+    zone_id                = aws_cloudfront_distribution.example.hosted_zone_id
+    evaluate_target_health = false
+  }
 }
