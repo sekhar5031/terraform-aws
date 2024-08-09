@@ -6,3 +6,7 @@ instance_type = "t2.micro"
 zone_id = "Z021510216V1WKGFY1GOP"
 record_name = "dev.cloudcastnepal.com"
 environment = "dev"
+
+# New variables for CloudFront and Route 53
+domain_name     = "cloudcastnepal.com"
+certificate_arn = "arn:aws:acm:us-east-1:123456789012:certificate/your-certificate-arn"

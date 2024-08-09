@@ -1,11 +1,11 @@
 resource "aws_route53_record" "www" {
   zone_id = var.zone_id
-  name    = var.domain_name
-  type    = "A"
+  name    = var.record_name
+  type    = var.record_type
 
   alias {
-    name                   = aws_cloudfront_distribution.example.domain_name
-    zone_id                = aws_cloudfront_distribution.example.hosted_zone_id
+    name                   = var.record_value
+    zone_id                = var.zone_id
     evaluate_target_health = false
   }
 }

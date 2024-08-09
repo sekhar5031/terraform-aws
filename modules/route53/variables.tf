@@ -1,19 +1,19 @@
 variable "zone_id" {
-  description = "Route 53 Hosted Zone ID"
-  type = string
+  description = "The Route 53 hosted zone ID"
+  type        = string
 }
 
 variable "record_name" {
-  description = "Route 53 record name"
-  type = string
+  description = "The DNS record name"
+  type        = string
 }
 
 variable "record_type" {
-  description = "Route 53 record type"
-  type = string
+  description = "The DNS record type"
+  type        = string
 }
 
 variable "record_value" {
-  description = "Route 53 record value"
-  type = string
+  description = "The DNS record value"
+  type        = string
 }

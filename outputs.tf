@@ -7,5 +7,5 @@ output "eip" {
 }
 
 output "route53_record" {
-  value = module.route53.record
+  value = module.route53.www
 }
