@@ -9,6 +9,8 @@ module "ec2" {
   ami_id = var.ami_id
   instance_type = var.instance_type
   subnet_id = module.vpc.public_subnet_id
+  vpc_id = module.vpc.vpc_id
+  environment = var.environment
 }
 
 module "eip" {

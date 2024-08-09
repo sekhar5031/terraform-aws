@@ -36,3 +36,8 @@ variable "record_name" {
   description = "Route 53 record name"
   type = string
 }
+
+variable "environment" {
+  description = "Environment (dev, staging, prod)"
+  type = string
+}
